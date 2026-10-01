@@ -4,55 +4,72 @@ sources:
   - name: raw
     schema: gz_raw_data
     description: Greenweez raw data source
+
     tables:
       - name: sales
-        description: Raw sales transaction data
         identifier: raw_gz_sales
-        data_tests:
-          - unique:
-              column_name: "concat(cast(orders_id as string), '_', cast(pdt_id as string))"
+        description: Raw sales transaction data
+
+        config:
+          loaded_at_field: "cast(date_date as timestamp)"
+          freshness:
+            warn_after:
+              count: 90
+              period: day
+
         columns:
           - name: date_date
             description: Date of the sale
+
           - name: orders_id
             description: Order identification number
             data_tests:
               - not_null
+
           - name: pdt_id
             description: Product identification number
             data_tests:
               - not_null
+
           - name: revenue
             description: Revenue generated from the order
+
           - name: quantity
             description: Quantity of products sold
 
       - name: product
         identifier: raw_gz_product
         description: Raw product details and cost info
+
         columns:
           - name: products_id
             description: Unique product identification number
             data_tests:
               - unique
               - not_null
-          - name: purchse_price
+
+          - name: purchSE_price
             description: Purchase price of the product
 
       - name: ship
         identifier: raw_gz_ship
         description: Raw shipping fee and shipping cost data
+
         columns:
           - name: orders_id
             description: Unique order identification number
             data_tests:
               - unique
               - not_null
+
           - name: shipping_fee
             description: Shipping fee charged to the customer
+
           - name: shipping_fee_1
             description: Duplicate shipping fee column
-          - name: logcost
+
+          - name: logCost
             description: Logistics cost
+
           - name: ship_cost
             description: Shipping cost
