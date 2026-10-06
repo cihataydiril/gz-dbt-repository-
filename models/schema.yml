@@ -110,3 +110,18 @@ models:
       - name: click
         tests:
           - not_null
+
+  - name: int_campaigns_day
+    description: "Reklam kampanyalarının günlük bazda toplanmış versiyonudur"
+    columns:
+      - name: date_date
+        description: "Kampanya tarihi"
+        tests:
+          - unique
+          - not_null
+      - name: ads_cost
+        description: "Günlük toplam reklam maliyeti"
+      - name: impression
+        description: "Günlük toplam gösterim sayısı"
+      - name: click
+        description: "Günlük toplam tıklama sayısı"
