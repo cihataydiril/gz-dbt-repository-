@@ -142,3 +142,14 @@ models:
         description: "Günlük toplam gösterim sayisi"
       - name: ads_clicks
         description: "Günlük toplam tiklama sayisi"
+
+  - name: finance_campaigns_month
+    description: "Finans ve reklam verilerinin aylik toplami. ads_margin = operational_margin - ads_cost"
+    columns:
+      - name: datemonth
+        description: "Ayin ilk günü"
+        tests:
+          - unique
+          - not_null
+      - name: ads_margin
+        description: "Aylik toplam reklam marji"
