@@ -112,7 +112,7 @@ models:
           - not_null
 
   - name: int_campaigns_day
-    description: "Reklam kampanyalarının günlük bazda toplanmış versiyonudur"
+    description: "Reklam kampanyalarinin günlük bazda toplanmiş versiyonudur"
     columns:
       - name: date_date
         description: "Kampanya tarihi"
@@ -121,7 +121,24 @@ models:
           - not_null
       - name: ads_cost
         description: "Günlük toplam reklam maliyeti"
-      - name: impression
-        description: "Günlük toplam gösterim sayısı"
-      - name: click
-        description: "Günlük toplam tıklama sayısı"
+      - name: ads_impression
+        description: "Günlük toplam gösterim sayisi"
+      - name: ads_clicks
+        description: "Günlük toplam tiklama sayisi"
+
+  - name: finance_campaigns_day
+    description: "Günlük finans verisi ile reklam harcamalarini birleştiren mart modeli. ads_margin = operational_margin - ads_cost"
+    columns:
+      - name: date
+        description: "Tarih"
+        tests:
+          - unique
+          - not_null
+      - name: ads_margin
+        description: "Operasyonel marjdan reklam maliyeti çikarilmiş değer"
+      - name: ads_cost
+        description: "Günlük toplam reklam maliyeti"
+      - name: ads_impression
+        description: "Günlük toplam gösterim sayisi"
+      - name: ads_clicks
+        description: "Günlük toplam tiklama sayisi"
