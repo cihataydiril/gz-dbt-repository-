@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: fvt_gsheet
+    schema: fvt_gsheet
+    description: Fivetran ile Google Sheets'ten BigQuery'ye senkronize edilen finans verisi
+    tables:
+      - name: gwz_finance_campaign
+        description: Günlük kampanya maliyeti (gwz_finance Sheet, campaign sekmesi)
